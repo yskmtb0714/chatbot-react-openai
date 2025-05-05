@@ -80,8 +80,8 @@ This project focused on implementing multi-tool Function Calling with the OpenAI
 
 1.  **Clone the repository:**
     ```bash
-    git clone [YOUR_NEW_GITHUB_REPO_URL] 
-    cd [YOUR_PROJECT_FOLDER_NAME] 
+    git clone https://github.com/yskmtb0714/chatbot-react-openai.git
+    cd chatbot-react-openai
     ```
 2.  **Backend Setup:**
     * Navigate to `backend`: `cd backend`
