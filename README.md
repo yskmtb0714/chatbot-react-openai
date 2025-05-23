@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is an advanced portfolio project demonstrating a sophisticated AI chatbot application. It integrates a modern frontend (**React** with Vite) and a Python/Flask backend, leveraging the **OpenAI API (GPT models)** and the **LangChain framework** to provide powerful information retrieval and task execution capabilities.
+This third AI portfolio project significantly advances upon previous works by incorporating a dynamic, user-driven RAG system using LangChain, alongside sophisticated multi-tool function calling.
 
 The chatbot is designed to:
 * Allow users to **upload their own documents (PDFs, TXTs)** to create a dynamic, personalized knowledge base.
@@ -19,8 +19,11 @@ Here's a quick demonstration of the chatbot in action, showcasing file uploads f
 
 ![Advanced RAG Chatbot Demo](assets/chatbot_demo_final.gif) 
 
-*(Caption: This GIF demonstrates features like dynamic RAG with user-uploaded PDFs, context-aware Q&A that can reference specific documents from a multi-document knowledge base, and integrated function calls for various tasks.)*
-
+*(Caption: This GIF showcases the AI chatbot's core capabilities: 
+1. **Dynamic RAG:** Uploading multiple PDF/TXT documents (`demo1.pdf`, `demo2.pdf`) to instantly update its knowledge base.
+2. **Contextual Q&A:** Answering questions based on specific content within the uploaded `demo1.pdf` and `demo2.pdf`, demonstrating accurate information retrieval from a multi-document context.
+3. **Cross-Document Query Attempt:** Handling a query that refers to both `demo1.pdf` and `demo2.pdf` simultaneously.
+4. **Integrated Function Calling:** Seamlessly switching to perform tasks like fetching real-time weather information using an external API.)*
 ## Features
 
 * **Conversational Interface:**
@@ -35,7 +38,7 @@ Here's a quick demonstration of the chatbot in action, showcasing file uploads f
         * **Splitting:** Employs `RecursiveCharacterTextSplitter` to break documents into manageable chunks.
         * **Embedding:** Leverages `OpenAIEmbeddings` (e.g., `text-embedding-3-small`) to convert text chunks into vector representations.
         * **Vector Storage & Retrieval:** Utilizes **FAISS** as a vector store to efficiently store and search document embeddings. The FAISS index is persisted locally.
-        * **Retriever Logic:** Implements a retriever that can search across all uploaded documents or **filter results based on specific filenames** mentioned in the user's query. Uses MMR (Maximal Marginal Relevance) search for diverse results.
+        * **Retriever Logic:** Employs **FAISS** for efficient **similarity search**, retrieving the most relevant text chunks from the uploaded documents. This system intelligently supports **filtering results based on specific filenames** provided in the user's query, enabling targeted information retrieval from designated documents within the knowledge base.
     * **Question Answering:** Uses LangChain's `RetrievalQA` chain with a custom prompt to generate answers grounded in the retrieved document excerpts.
     * **Multi-Document Capability:** The vector store accumulates information from multiple uploaded files, allowing the RAG system to potentially draw from a broader knowledge base.
 * **Task Execution (Function Calling via OpenAI API directly):**
